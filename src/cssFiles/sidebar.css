@@ -4,8 +4,8 @@
     display:flex;
     flex-direction: column;
     flex: 0.35;
-}
-
+} 
+ 
 /*#region Header*/
 
 .sidebar__header{
@@ -30,7 +30,7 @@
 }
 
 /*#endregion*/
-
+ 
 
 /*#region Search*/
 
