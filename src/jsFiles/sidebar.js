@@ -5,11 +5,13 @@ import { Avatar, IconButton } from '@material-ui/core';
 import { DonutLargeOutlined, MoreVert, Chat, SearchOutlined } from '@material-ui/icons';
 import db from '../Services/firebase';
 import { useStateValue } from './StateProvider';
+import Menu from './Menu';
 
 function Sidebar(){
     const [rooms, setRooms] = useState([]); 
-    const [{user}, dispatch] = useStateValue();
-    // console.log(user);
+    const [{user}] = useStateValue();
+
+
     useEffect(()=>{
          
         const unsubscribe = db.collection('Rooms').onSnapshot(snapshot =>{
@@ -45,9 +47,7 @@ function Sidebar(){
                     <IconButton>
                         <Chat></Chat>
                     </IconButton>
-                    <IconButton>
-                        <MoreVert></MoreVert>
-                    </IconButton>
+                    <Menu></Menu>
                 </div>
             </div>
            

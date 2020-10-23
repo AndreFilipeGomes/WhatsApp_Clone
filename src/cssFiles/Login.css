@@ -11,7 +11,8 @@
     text-align: center;
     background-color: white;
     border-radius:10px;
-    box-shadow: 0 1px 3px rgba(97, 90, 90, 0.7), 0px 1px;
+    /* box-shadow: 0 1px 3px rgba(97, 90, 90, 0.7), 0px 1px; */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
 }
 
 .login__container > img{
@@ -20,9 +21,74 @@
     height: 100px;
 }
 
+.login__container > hr{
+    margin-top:15px;
+    margin-bottom: 15px;
+    border: 1px solid rgb(211, 211, 211);
+}
+
 .login__container > button{
-    margin-top: 50px;
-    color: white;
+    font-size: 15px;
+    /* margin-top:30px!important; */
+    width:100%;
+    background-color: rgb(39, 148, 221) !important;
+    color: white !important;
+    border: 1px solid lightgrey;
     text-transform: inherit !important;
-    background-color: #0a8d48 !important;
+}
+
+.login__text > h1{
+    margin-bottom: 20px;
+}
+
+.login__formContainer > form{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.login__formContainer > form > input{
+    padding: 5px;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.login__formContainer > form > button{
+    border: none;
+    padding: 10px;
+    font-size: 15px;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    background-color:#0a8d48 !important;
+    color: white;
+    margin-bottom: 15px;
+    border-radius: 4px;
+}
+
+.login__formContainer__Registration{
+    background-color: white !important;
+    color: black;
+    border: 1px solid lightgrey;
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    border-radius: 4px;
+}
+
+.login__formContainer > form > h5{
+    /* margin-top:10px; */
+    margin-bottom: 5px;
+    /* font-size:13px; */
+    /* font-weight: 800; */
+}
+
+
+.login__text{
+    margin-bottom: 15px;
+}
+
+.login__signInGoogle__Avantar{
+    margin-right:10px;
+    height:30px !important;
+    width:30px !important;
 }

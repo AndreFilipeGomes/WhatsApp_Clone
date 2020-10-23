@@ -1,38 +1,83 @@
-import React from 'react';
+import React, {useState} from 'react';
 import "../cssFiles/Login.css"
-import { Button } from '@material-ui/core';
-import { auth, provider } from '../Services/firebase'; 
-import { actionTypes } from './Reducer';
-import { useStateValue } from './StateProvider';
+import { Avatar, Button } from '@material-ui/core';
+import { auth, provider } from '../Services/firebase';
+import { useHistory } from 'react-router-dom';
 
 function Login(){
 
-    const [ , dispatch] = useStateValue();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const history = useHistory();
 
+    //#region Login/Registration
     const signIn = () =>{
         auth.signInWithPopup(provider)
         .then((result) =>{
-            dispatch({
-                type: actionTypes.SET_USER,
-                user: result.user
-            })
+            if(history)
+                history.push('/');
         }).catch((error) =>
             console.log(error.message)
         );
     };
+
+    const login = (e) => {
+        e.preventDefault();
+
+        auth
+        .signInWithEmailAndPassword(email, password)
+        .then((auth) => {
+            if(history)
+                history.push('/');
+        })
+        .catch((e) => alert(e.message));
+    }
+
+    const register = e =>{
+        e.preventDefault();
+        
+        auth
+        .createUserWithEmailAndPassword(email, password)
+        .then((auth)=>{
+            if(history)
+                history.push('/');
+        }).catch((message)=>{
+            alert(message);
+        });
+
+        
+    };
+    //#endregion
 
     return(
         <div className="login">
            <div className="login__container">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt=""></img>
 
-                <div className="login__text">
+                 <div className="login__text">
                     <h1>Sign in to WhatsApp</h1>
+                    <span>This can be a fictitious email/password</span>
                 </div>
 
-                <Button  onClick={signIn}>
+                <div className="login__formContainer">
+                    <form>
+                        <h5>E-mail</h5>
+                        <input type="email" onChange={(e) => setEmail(e.target.value)} value={email}></input>
+
+                        <h5>Password</h5>
+                        <input type="password" onChange={(e) => setPassword(e.target.value)} value={password}></input>
+
+                        <button onClick={login}>Sign In</button>
+                    </form>
+                    <button className="login__formContainer__Registration" onClick={register}>Create your Account</button>
+                </div>
+
+                <hr></hr>
+
+                <Button onClick={signIn}>
+                    <Avatar className="login__signInGoogle__Avantar" alt="Remy Sharp" src="https://icons.iconarchive.com/icons/papirus-team/papirus-apps/256/google-icon.png" />
                     Sign In With Google
-                </Button>
+                </Button> 
            </div>
         </div>
     )

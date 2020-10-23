@@ -1,0 +1,8 @@
+.menu__styledMenuItem{
+    display: flex;
+    align-items: center;
+}
+
+.menu__listItemIcon {
+    min-width: 42px !important;
+}
