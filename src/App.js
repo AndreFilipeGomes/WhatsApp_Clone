@@ -9,7 +9,7 @@ import { auth } from './Services/firebase';
 
 function App() {
 
-  const [ user , dispatch] = useStateValue();
+  const [user , dispatch] = useStateValue();
 
   useEffect(() => {
     //Initialize listener to AuthState change
@@ -35,13 +35,15 @@ function App() {
   }, [])
 
 
+
   return (
     // BEM naming convention
     <div className="app">
-     
         {
         !(user?.user.user) ? (
-          <Login  path="/login"></Login>
+          <Router>
+            <Login></Login>
+          </Router>
         ): (
           <div className="app__body">
             <Router>
@@ -61,7 +63,6 @@ function App() {
           </div>
         )}
 
-     
     </div>
   );
 }

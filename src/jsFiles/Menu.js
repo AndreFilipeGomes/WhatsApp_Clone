@@ -5,11 +5,12 @@ import MenuItem from '@material-ui/core/MenuItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import { IconButton } from '@material-ui/core';
-import { MoreVert } from '@material-ui/icons';
+import { MoreVert, Router } from '@material-ui/icons';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import '../cssFiles/Menu.css'
 import { useStateValue } from './StateProvider';
 import { auth } from '../Services/firebase';
+import { Link } from 'react-router-dom';
 
 function Menu() {
 
@@ -67,6 +68,7 @@ function Menu() {
 
     return (
         <div className="menu">
+           
             <IconButton
                 aria-controls="customized-menu"
                 aria-haspopup="true"
@@ -83,16 +85,21 @@ function Menu() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
             >
-                <StyledMenuItem>
-                    <div className="menu__styledMenuItem" onClick={SignOut}>
-                        <ListItemIcon className="menu__listItemIcon">
+                
+                <Link to="/Login">
+                    <StyledMenuItem>
+                        <div className="menu__styledMenuItem" onClick={SignOut}>
+                            
+                            <ListItemIcon className="menu__listItemIcon">
                             <ExitToAppIcon fontSize="small" />
-                        </ListItemIcon>
-                        <ListItemText primary="Logout" />
-                    </div>
-                </StyledMenuItem>
+                            </ListItemIcon>
+                            <ListItemText primary="Logout" />
+
+                        </div>
+                    </StyledMenuItem>
+                </Link>
+                
             </StyledMenu>
-            
         </div>
     )
 }
